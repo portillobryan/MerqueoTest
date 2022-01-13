@@ -1,0 +1,184 @@
+{
+	"info": {
+		"_postman_id": "164ae1e9-8d60-4971-83b0-ea60c665bddc",
+		"name": "Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "jsonplaceholder_Method_posts",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Validación de Code\",function(){\r",
+							"    pm.expect(pm.response.code).to.equals(201);    \r",
+							"})\r",
+							"\r",
+							"pm.test(\"Validación Tiempo de Respuesta\", function(){\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validación Status\",function(){\r",
+							"    pm.response.to.have.status(\"Created\");    \r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validación de Body\",function(){\r",
+							"    var title = pm.variables.get(\"title\");\r",
+							"    var body = pm.variables.get(\"body\");\r",
+							"    var userId = pm.variables.get(\"userId\");\r",
+							"    pm.expect(title).to.equals(title);\r",
+							"    pm.expect(body).to.equals(body);\r",
+							"    pm.expect(userId).to.equals(userId);\r",
+							"    \r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\":\"{{title}}\",\r\n    \"body\" : \"{{body}}\",\r\n    \"userId\": {{userId}}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/posts",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "jsonplaceholder_Method_Get",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Validación de Code\",function(){\r",
+							"    pm.expect(pm.response.code).to.equals(200);    \r",
+							"})\r",
+							"\r",
+							"pm.test(\"Validación Tiempo de Respuesta\", function(){\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validación Status\",function(){\r",
+							"    pm.response.to.have.status(\"OK\");    \r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validación de ID\",function(){\r",
+							"\r",
+							"    var id_post = pm.variables.get(\"id_post\");\r",
+							"    var jsonData = pm.response.json();\r",
+							"    var id_body =  jsonData.id;\r",
+							"    pm.expect(String(id_body)).to.equals(id_post);\r",
+							"    \r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/posts/{{id_post}}",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"posts",
+						"{{id_post}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "jsonplaceholder_Method_Put",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Validación de Code\",function(){\r",
+							"    pm.expect(pm.response.code).to.equals(200);    \r",
+							"})\r",
+							"\r",
+							"pm.test(\"Validación Tiempo de Respuesta\", function(){\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validación Status\",function(){\r",
+							"    pm.response.to.have.status(\"OK\");    \r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validación de Body\",function(){\r",
+							"    var title = pm.variables.get(\"title\");\r",
+							"    var body = pm.variables.get(\"body\");\r",
+							"    var userId = pm.variables.get(\"userId\");\r",
+							"    pm.expect(title).to.equals(title);\r",
+							"    pm.expect(body).to.equals(body);\r",
+							"    pm.expect(userId).to.equals(userId);\r",
+							"    \r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":{{id_post}},\r\n    \"title\":\"{{title}}\",\r\n    \"body\" :\"{{body}}\",\r\n    \"userId\" : {{userId}}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/posts/{{id_post}}",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"posts",
+						"{{id_post}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
